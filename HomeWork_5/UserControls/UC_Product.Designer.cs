@@ -40,13 +40,13 @@
             // 
             // pbox_productPicture
             // 
-            this.pbox_productPicture.BackgroundImage = global::HomeWork_5.Properties.Resources.external_product_advertising_wanicon_two_tone_wanicon;
             this.pbox_productPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pbox_productPicture.Enabled = false;
             this.pbox_productPicture.ErrorImage = global::HomeWork_5.Properties.Resources.external_product_advertising_wanicon_two_tone_wanicon;
             this.pbox_productPicture.Location = new System.Drawing.Point(48, 0);
             this.pbox_productPicture.Name = "pbox_productPicture";
             this.pbox_productPicture.Size = new System.Drawing.Size(40, 40);
+            this.pbox_productPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbox_productPicture.TabIndex = 0;
             this.pbox_productPicture.TabStop = false;
             // 
