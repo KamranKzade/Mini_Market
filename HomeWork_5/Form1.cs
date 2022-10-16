@@ -30,6 +30,7 @@ namespace HomeWork_5
 
         public double money = 0;
 
+
         private void btn_Click(object sender, EventArgs e)
         {
 
@@ -67,15 +68,6 @@ namespace HomeWork_5
             }
 
         }
-
-        private void btn_qebz_almaq_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show($"Mebleg: {money}");
-        }
-
-
-
-
         private void txtbox_pulu_daxil_etme_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (IsAllDigits(txtbox_pulu_daxil_etme.Text) is false)
@@ -84,21 +76,20 @@ namespace HomeWork_5
                 MessageBox.Show("Reqem daxil edin", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-              
-
-
-        public double daxil;
-
-        private void txtbox_pulu_daxil_etme_TextChanged(object sender, EventArgs e)
+        private void txtbox_pulu_daxil_etme_TextChanged(object sender, EventArgs e) => txt_mebleg.Text = txtbox_pulu_daxil_etme.Text;
+        private void txtbox_pulu_daxil_etme_Leave(object sender, EventArgs e)
         {
-
-            double.TryParse(txtbox_pulu_daxil_etme.Text, out daxil);
-            txt_mebleg.Text = txtbox_pulu_daxil_etme.Text;
+            double.TryParse(txtbox_pulu_daxil_etme.Text, out double daxil);
+            money += daxil;
         }
 
 
 
+
+        private void btn_qebz_almaq_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show($"Mebleg: {money}");
+        }
         bool IsAllDigits(string s)
         {
             foreach (char c in s)
@@ -107,11 +98,6 @@ namespace HomeWork_5
                     return false;
             }
             return true;
-        }
-
-        private void txtbox_pulu_daxil_etme_KeyDown(object sender, KeyEventArgs e)
-        {
-            money += daxil;
         }
     }
 

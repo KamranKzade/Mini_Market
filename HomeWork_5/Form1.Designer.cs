@@ -64,8 +64,8 @@
             this.txtbox_pulu_daxil_etme.Size = new System.Drawing.Size(341, 42);
             this.txtbox_pulu_daxil_etme.TabIndex = 2;
             this.txtbox_pulu_daxil_etme.TextChanged += new System.EventHandler(this.txtbox_pulu_daxil_etme_TextChanged);
-            this.txtbox_pulu_daxil_etme.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbox_pulu_daxil_etme_KeyDown);
             this.txtbox_pulu_daxil_etme.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbox_pulu_daxil_etme_KeyPress);
+            this.txtbox_pulu_daxil_etme.Leave += new System.EventHandler(this.txtbox_pulu_daxil_etme_Leave);
             // 
             // btn_10_qepik
             // 
