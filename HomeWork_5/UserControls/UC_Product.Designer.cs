@@ -34,6 +34,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txt_count = new System.Windows.Forms.TextBox();
             this.cbox = new System.Windows.Forms.CheckBox();
+            this.lbl_azn = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbox_productPicture)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -66,11 +67,11 @@
             this.lbl_product_price.AutoSize = true;
             this.lbl_product_price.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_product_price.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.lbl_product_price.Location = new System.Drawing.Point(39, 65);
+            this.lbl_product_price.Location = new System.Drawing.Point(27, 65);
             this.lbl_product_price.Name = "lbl_product_price";
-            this.lbl_product_price.Size = new System.Drawing.Size(59, 23);
+            this.lbl_product_price.Size = new System.Drawing.Size(44, 23);
             this.lbl_product_price.TabIndex = 1;
-            this.lbl_product_price.Text = "Price ";
+            this.lbl_product_price.Text = "Pric";
             // 
             // panel1
             // 
@@ -79,6 +80,7 @@
             this.panel1.Controls.Add(this.cbox);
             this.panel1.Controls.Add(this.pbox_productPicture);
             this.panel1.Controls.Add(this.lbl_product_name);
+            this.panel1.Controls.Add(this.lbl_azn);
             this.panel1.Controls.Add(this.lbl_product_price);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -95,6 +97,8 @@
             this.txt_count.Size = new System.Drawing.Size(82, 27);
             this.txt_count.TabIndex = 4;
             this.txt_count.Visible = false;
+            this.txt_count.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_count_KeyPress);
+            this.txt_count.Leave += new System.EventHandler(this.txt_count_Leave);
             // 
             // cbox
             // 
@@ -106,6 +110,17 @@
             this.cbox.TabIndex = 3;
             this.cbox.UseVisualStyleBackColor = true;
             this.cbox.CheckedChanged += new System.EventHandler(this.cbox_CheckedChanged);
+            // 
+            // lbl_azn
+            // 
+            this.lbl_azn.AutoSize = true;
+            this.lbl_azn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_azn.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.lbl_azn.Location = new System.Drawing.Point(65, 65);
+            this.lbl_azn.Name = "lbl_azn";
+            this.lbl_azn.Size = new System.Drawing.Size(44, 23);
+            this.lbl_azn.TabIndex = 1;
+            this.lbl_azn.Text = "Azn";
             // 
             // UC_Product
             // 
@@ -127,7 +142,8 @@
         public Label lbl_product_name;
         public Label lbl_product_price;
         private Panel panel1;
-        private CheckBox cbox;
         public TextBox txt_count;
+        public Label lbl_azn;
+        public CheckBox cbox;
     }
 }

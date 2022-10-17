@@ -1,7 +1,6 @@
-using HomeWork_5.Models;
 using HomeWork_5.Repository;
 using HomeWork_5.UserControls;
-using System.Text.RegularExpressions;
+using System.Text;
 
 namespace HomeWork_5
 {
@@ -22,13 +21,13 @@ namespace HomeWork_5
 
 
                 uc.Dock = DockStyle.Top;
-                uc.pbox_productPicture.BackgroundImageLayout = ImageLayout.Zoom;
 
                 flowLayoutPanel1.Controls.Add(uc);
             }
         }
 
         public double money = 0;
+        public double odenis = 0;
 
 
         private void btn_Click(object sender, EventArgs e)
@@ -47,7 +46,7 @@ namespace HomeWork_5
                         txt_mebleg.Text = money.ToString();
                         break;
                     case "btn_50_qepik":
-                        money += 0.4;
+                        money += 0.5;
                         txt_mebleg.Text = money.ToString();
                         break;
                     case "btn_10_azn":
@@ -67,6 +66,7 @@ namespace HomeWork_5
                 }
             }
 
+            flowLayoutPanel1.Enabled = true;
         }
         private void txtbox_pulu_daxil_etme_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -76,20 +76,57 @@ namespace HomeWork_5
                 MessageBox.Show("Reqem daxil edin", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void txtbox_pulu_daxil_etme_TextChanged(object sender, EventArgs e) => txt_mebleg.Text = txtbox_pulu_daxil_etme.Text;
+        private void txtbox_pulu_daxil_etme_TextChanged(object sender, EventArgs e)
+        {
+            txt_mebleg.Text = txtbox_pulu_daxil_etme.Text;
+            flowLayoutPanel1.Enabled = true;
+        }
         private void txtbox_pulu_daxil_etme_Leave(object sender, EventArgs e)
         {
             double.TryParse(txtbox_pulu_daxil_etme.Text, out double daxil);
             money += daxil;
         }
-
-
-
-
         private void btn_qebz_almaq_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"Mebleg: {money}");
+            StringBuilder sb = new();
+            sb.Append($"Alinan Mallar\n");
+            foreach (var control in flowLayoutPanel1.Controls)
+            {
+                if (control is UC_Product uC_Product)
+                {
+                    if (uC_Product.cbox.Checked)
+                    {
+                        odenis += uC_Product.xerc;
+                        sb.Append(@$"{(uC_Product.lbl_product_name.Text)} -> {uC_Product.txt_count.Text.ToString()} eded 
+");
+                    }
+                }
+            }
+
+            double qaliq = money - odenis;
+            txt_box_qaliq.Text = qaliq.ToString();
+            sb.Append($"Daxil edilen pul: {money}\nOdenilen mebleg: {odenis}\n");
+
+
+            if (qaliq >= 0)
+            {
+                sb.Append($@"Qaliq: {qaliq}");
+                MessageBox.Show(sb.ToString(), "Qebz", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
+            }
+            else
+            {
+                double borc = money - odenis;
+                sb.Append($@"Borc: {borc * -1}");
+                MessageBox.Show(sb.ToString(), "Qebz", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Zehmet olmasa tez bir zamanda borcunuzu odeyin ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
+            }
+
+
         }
+
+
         bool IsAllDigits(string s)
         {
             foreach (char c in s)
@@ -100,5 +137,4 @@ namespace HomeWork_5
             return true;
         }
     }
-
 }
